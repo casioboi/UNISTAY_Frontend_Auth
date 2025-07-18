@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import ErrorMessage from "../components/common/ErrorMessage";
-import Loader from "../components/common/Loader";
+import ErrorMessage from "../components/ErrorMessage";
+import Loader from "../components/Loader";
 
 import UserIcon from "../assets/UserIcon.png";
 import LockIcon from "../assets/password_icon.png";
 
-export default function LoginPage() {
+export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
@@ -169,4 +169,4 @@ export default function LoginPage() {
       )}
     </div>
   );
-}
+} 

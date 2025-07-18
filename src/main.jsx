@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './index.css';
-import ErrorBoundary from './components/common/ErrorBoundary';
+import ErrorBoundary from './components/ErrorBoundary';
 import { ToastContainer } from 'react-toastify';
 import { Toaster } from "react-hot-toast";
 import 'react-toastify/dist/ReactToastify.css';
