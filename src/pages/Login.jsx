@@ -49,10 +49,20 @@ export default function Login() {
 
       localStorage.setItem("token", data.accessToken);
       localStorage.setItem("user", JSON.stringify(data.user));
+      localStorage.setItem("userType", data.user.userType?.toLowerCase?.());
 
       toast.success("✅ Login successful!");
       setSuccessAnimation(true); // Show check animation
-      setTimeout(() => navigate("/dashboard"), 2500);
+      setTimeout(() => {
+        const userType = localStorage.getItem("userType");
+        if (userType === "student") {
+          navigate("/dashboard/student");
+        } else if (userType === "owner") {
+          navigate("/dashboard/owner");
+        } else {
+          navigate("/dashboard");
+        }
+      }, 2500);
     } catch (err) {
       if (err.name === "TypeError") {
         toast.error("🌐 Network error or CORS issue. Please try again.");
