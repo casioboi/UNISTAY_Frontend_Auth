@@ -9,7 +9,7 @@ import {
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function SignupPage() {
+export default function Register() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -266,4 +266,4 @@ export default function SignupPage() {
       )}
     </div>
   );
-}
+} 

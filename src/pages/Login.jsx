@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import ErrorMessage from "../components/common/ErrorMessage";
-import Loader from "../components/common/Loader";
+import ErrorMessage from "../components/ErrorMessage";
+import Loader from "../components/Loader";
 
 import UserIcon from "../assets/UserIcon.png";
 import LockIcon from "../assets/password_icon.png";
 
-export default function LoginPage() {
+export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
@@ -49,10 +49,20 @@ export default function LoginPage() {
 
       localStorage.setItem("token", data.accessToken);
       localStorage.setItem("user", JSON.stringify(data.user));
+      localStorage.setItem("userType", data.user.userType?.toLowerCase?.());
 
       toast.success("✅ Login successful!");
       setSuccessAnimation(true); // Show check animation
-      setTimeout(() => navigate("/dashboard"), 2500);
+      setTimeout(() => {
+        const userType = localStorage.getItem("userType");
+        if (userType === "student") {
+          navigate("/dashboard/student");
+        } else if (userType === "owner") {
+          navigate("/dashboard/owner");
+        } else {
+          navigate("/dashboard");
+        }
+      }, 2500);
     } catch (err) {
       if (err.name === "TypeError") {
         toast.error("🌐 Network error or CORS issue. Please try again.");
@@ -169,4 +179,4 @@ export default function LoginPage() {
       )}
     </div>
   );
-}
+} 
